@@ -1,0 +1,79 @@
+#Student Grade Tracker : CODTECH Task-2
+
+class GradeManager:
+    def __init__(self):
+        self.grades = {}
+    
+    def add_grade(self, subject, grade):
+        if subject in self.grades:
+            self.grades[subject].append(grade)
+        else:
+            self.grades[subject] = [grade]
+        print(f"Added grade {grade} for {subject}.")
+    
+    def calculate_average(self):
+        total = 0
+        count = 0
+        for subject, grades in self.grades.items():
+            total += sum(grades)
+            count += len(grades)
+        if count == 0:
+            return 0
+        return total / count
+    def calculate_gpa(self):
+        average = self.calculate_average()
+        return average / 20  
+    
+    def get_letter_grade(self):
+        average = self.calculate_average()
+        if average >= 90:
+            return 'A'
+        elif average >= 80:
+            return 'B'
+        elif average >= 70:
+            return 'C'
+        elif average >= 60:
+            return 'D'
+        else:
+            return 'F'
+
+    def display_grades(self):
+        print("\nGrades by Subject:")
+        for subject, grades in self.grades.items():
+            print(f"{subject}: {grades}")
+        average = self.calculate_average()
+        gpa = self.calculate_gpa()
+        letter_grade = self.get_letter_grade()
+        print(f"\nAverage Grade: {average:.2f}")
+        print(f"GPA: {gpa:.2f}")
+        print(f"Letter Grade: {letter_grade}")
+
+
+def main():
+    manager = GradeManager()
+
+    while True:
+        print("\n Grade Manager")
+        print("1. Add Grade")
+        print("2. Show Grades")
+        print("3. Exit")
+        choice = input("Choose an option (1 to 3): ")
+
+        if choice == '1':
+            subject = input("Enter subject : ")
+            grade = float(input("Enter grade (0 to 100): "))
+            if 0 <= grade <= 100:
+                manager.add_grade(subject, grade)
+            else:
+                print("Enter Grade between 0 and 100.")
+        elif choice == '2':
+            manager.display_grades()
+        elif choice == '3':
+            print("Exit program.")
+            break
+        else:
+            print("Invalid choice.")
+
+
+if __name__ == "__main__":
+    main()
