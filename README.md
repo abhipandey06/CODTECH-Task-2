@@ -33,3 +33,6 @@ Python class
 object-oriented programming
 user interface
 menu-driven
+
+OUTPUT OF THIS PROGRAM: 
+![Screenshot 2024-09-22 124904](https://github.com/user-attachments/assets/4c8a40b4-79d7-403f-bb9a-fd412b054bc0)
